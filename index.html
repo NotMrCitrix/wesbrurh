@@ -25,6 +25,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 90%;
+            display: none; /* Hidden initially */
         }
 
         h1 {
@@ -64,7 +65,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="content">
         <h1>FREE GIFT CARDS!</h1>
         <p>Choose your gift card below:</p>
         <button onclick="claimAmazon()">FREE Amazon Gift Card $20</button>
@@ -73,6 +74,19 @@
     <footer>Not a real gift card, just for fun.</footer>
 
     <script>
+        // Lock the page until the correct answer is provided
+        function unlockPage() {
+            let answer = prompt("What's a bibble?");
+            if (answer && answer.toLowerCase() === "book") {
+                document.getElementById('content').style.display = "block";
+            } else {
+                alert("Incorrect! Try again.");
+                unlockPage(); // Retry until the correct answer is provided
+            }
+        }
+
+        unlockPage();
+
         function claimAmazon() {
             alert('hahaha lol - No Amazon gift card for you!');
         }
